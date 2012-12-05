@@ -3,14 +3,18 @@ require_relative 'score'
 describe Score do
   
   describe "#initialize" do
-    its(:server)   { should == :love }
-    its(:receiver) { should == :love }
-    its(:to_s)     { should == "love love" }
+    its(:server)   { should == 0 }
+    its(:receiver) { should == 0 }
   end
-  
-  describe '#give_point' do
-    before { subject.give_point(:server) }
-    its(:to_s) { should == 'fifteen love' }
+    
+  describe '#point_for' do
+    4.times.each do |t|
+      [:server, :receiver].each do |p|
+        context "#{p} makes a point #{t} times" do
+          before { t.times { subject.point_for(p) } }
+          its(p) { should == t }
+        end
+      end
+    end
   end
-  
 end

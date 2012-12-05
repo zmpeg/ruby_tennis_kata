@@ -3,16 +3,12 @@ class Score
   attr_reader :server, :receiver
   
   def initialize
-    @server = :love
-    @receiver = :love
+    @receiver = @server = 0
   end
   
-  def to_s
-    "#{server} #{receiver}"
-  end
-  
-  def give_point(player)
-    
+  def point_for(player)
+    var = :"@#{player}"
+    instance_variable_set(var, instance_variable_get(var) + 1)
   end
   
 end

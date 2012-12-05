@@ -4,8 +4,7 @@ class TennisGame
   
   def initialize(players)
     @players = players
-    @scores = {}
-    @score_map = [:love, :fifteen, :thirty, :forty]
+    @score = new Score()
   end
 
   def win_the_ball(player)
@@ -13,7 +12,7 @@ class TennisGame
   end
   
   def score
-    @players.map { |p| @score_map[balls_won(p)] }
+    ScoreTranslator.translate(@scores)
   end
   
   def balls_won(player)
