@@ -12,8 +12,8 @@ class TennisGame
     @scores[player] = balls_won(player) +  1
   end
   
-  def score(player)
-    @score_map[balls_won(player)]
+  def score
+    @players.map { |p| @score_map[balls_won(p)] }
   end
   
   def balls_won(player)
