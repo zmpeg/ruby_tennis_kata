@@ -16,7 +16,7 @@ describe TennisGame do
     context "First round" do
       context "Red scores" do
         before { subject.win_the_ball(:red) } 
-        its(:score) { should == 'fifteen, love' }
+        its(:score) { should == 'fifteen love' }
       end
       
       # context "Blue scores" do
