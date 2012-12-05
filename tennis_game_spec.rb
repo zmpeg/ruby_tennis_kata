@@ -1,21 +1,21 @@
+require 'set'
+
 require_relative './tennis_game'
 
 describe TennisGame do
   
-  context "A player scores a point" do
-    context "Red scores" do
-      before {subject.win_the_ball(:red)} 
+  let(:players) { Set.new [:red, :blue] }
 
-      it { subject.score(:red).should == 1 }
-      it { subject.score(:blue).should == 0 }
-    end
-    
-    context "Blue scores" do
-      before {subject.win_the_ball(:blue)} 
+  context "First round" do
+    [:red, :blue].each do |player|
+      context "#{player} scores" do
+        before {subject.win_the_ball(player)} 
 
-      it { subject.score(:red).should == 0  }
-      it { subject.score(:blue).should == 1 }
+        it { subject.score(player).should == 1 }
+        it { subject.score(@players.delete(player).first).should == 0 }
+      end
     end
   end
+    
 
 end
