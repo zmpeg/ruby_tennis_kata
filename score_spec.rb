@@ -17,4 +17,20 @@ describe Score do
       end
     end
   end
+
+  describe '#winner?' do
+    subject do
+      Score.new
+    end
+
+    [:server, :receiver].permutation(2).to_a.each do |players|
+      context "#{players[1]} wins the game with 4 points" do
+        before do
+          2.times.each { subject.point_for(players[0])   }
+          4.times.each { subject.point_for(players[1]) }
+        end
+        its(:winner?) { should == players[1] }
+      end
+    end
+  end
 end
