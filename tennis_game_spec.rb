@@ -19,11 +19,12 @@ describe TennisGame do
   end
   
   describe "#win_the_ball" do
-    before do 
-      score.should_receive(:point_for).with(:server)
-    end
-    
-    it { subject.win_the_ball(:red)  }
+      before do
+        score.should_receive(:winner?)
+        score.should_receive(:point_for).with(:server)
+      end
+
+      it { subject.win_the_ball(:red) }
   end
   
   describe '#score' do
