@@ -20,7 +20,8 @@ describe TennisGame do
   
   describe "#win_the_ball" do
       before do
-        score.should_receive(:winner?)
+        Score.stub(:new).and_return(score)
+        score.stub(:winner?).and_return(false)
         score.should_receive(:point_for).with(:server)
       end
 
