@@ -9,7 +9,7 @@ class TennisGame
   end
 
   def win_the_ball(player)
-    @score.winner? || @score.point_for([:server, :receiver][@players.index(player)])
+    @score.point_for([:server, :receiver][@players.index(player)])
   end
   
   def score

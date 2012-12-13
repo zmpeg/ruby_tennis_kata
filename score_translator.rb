@@ -8,10 +8,12 @@ class ScoreTranslator
   end
   
   def translate
-    s1 = @score_map[@score.server]
-    s2 = @score_map[@score.receiver]
 
-    "#{s1} #{s2}"
+    if @score.server <= 3 && @score.receiver <= 3
+	    "#{@score_map[@score.server]} #{@score_map[@score.receiver]}"
+	  else
+	  	"deuce"
+    end
   end
   
 end

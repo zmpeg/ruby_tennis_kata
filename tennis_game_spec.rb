@@ -21,10 +21,9 @@ describe TennisGame do
   describe "#win_the_ball" do
       before do
         Score.stub(:new).and_return(score)
-        score.stub(:winner?).and_return(false)
         score.should_receive(:point_for).with(:server)
       end
-
+      
       it { subject.win_the_ball(:red) }
   end
   
