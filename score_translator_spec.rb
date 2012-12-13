@@ -32,6 +32,18 @@ describe ScoreTranslator do
       subject { ScoreTranslator.new(score).translate }
       it { should == 'deuce'}
     end
+
+    context 'When score is 4-5' do
+      let(:score) { Score.new(4, 5) }
+      subject { ScoreTranslator.new(score).translate }
+      it { should == 'advantage out'}
+    end
+
+    context 'When score is 4-3' do
+      let(:score) { Score.new(4, 3) }
+      subject { ScoreTranslator.new(score).translate }
+      it { should == 'advantage in'}
+    end
   end
   
 end
